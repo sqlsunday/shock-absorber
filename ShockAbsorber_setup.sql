@@ -48,7 +48,7 @@ AS
 
 SELECT DENSE_RANK() OVER (ORDER BY Batch) AS ExecutionNo,
        [Table],
-       Batch AS [Batch started],
+       Batch AS [Execution started],
        ROW_NUMBER() OVER (PARTITION BY Batch ORDER BY [date]) AS BatchNo,
        CAST(0.001*DATEDIFF(ms, Batch, [date]) AS numeric(12, 3)) AS [Offset, seconds],
        CAST(0.001*[duration] AS numeric(12, 3)) AS [Duration, seconds],
