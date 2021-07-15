@@ -27,7 +27,7 @@ IF (OBJECT_ID('ShockAbsorber.Perfstats') IS NULL) BEGIN;
     --- Add a clustered primary key. Use the OPTIMIZE_FOR_SEQUENTIAL_KEY=ON hint
     --- if you're on SQL Server 2019 or higher.
     DECLARE @sql nvarchar(max)=N'
-    ALTER TABLE ShockAbsorber.Perfstats ADD CONSTRAINT PK_Perfstats PRIMARY KEY CLUSTERED (Batch, [Date])'+
+    ALTER TABLE ShockAbsorber.Perfstats ADD CONSTRAINT PK_Perfstats PRIMARY KEY CLUSTERED (Batch, [date])'+
         (CASE WHEN CAST(LEFT(CAST(SERVERPROPERTY('productversion') AS nvarchar(100)), 2) AS tinyint)>=15
               THEN N' WITH (OPTIMIZE_FOR_SEQUENTIAL_KEY=ON)'
               ELSE N'' END);
